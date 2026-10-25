@@ -1,0 +1,53 @@
+:root {
+  --bg-void: #0a0a0c;
+  --bg-blood: #120b0b;
+  --bg-moss: #1f3a2d;
+  --neon-red: #e23b2e;
+  --neon-cyan: #39d0d8;
+  --bulb-amber: #f2b84b;
+  --text-primary: #f5efe6;
+  --text-secondary: #b9a99a;
+  --text-dim: #6b5f55;
+  --font-display: 'Benguiat', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-body: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  --z-film: 1;
+  --z-nav: 100;
+  --z-overlay: 200;
+  --gutter: clamp(1rem, 4vw, 3rem);
+}
+
+*::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg-void); color: var(--text-primary); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+body { min-height: 100vh; overflow-x: hidden; }
+a { color: var(--neon-cyan); text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+::selection { background: var(--neon-red); color: var(--text-primary); }
+
+.film-grain {
+  position: fixed; inset: -50%; width: 200%; height: 200%;
+  pointer-events: none; z-index: var(--z-film); opacity: 0.04;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  animation: grain-shift 0.6s steps(6) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0,0); } 20% { transform: translate(-3%,2%); } 40% { transform: translate(2%,-3%); }
+  60% { transform: translate(-2%,-2%); } 80% { transform: translate(3%,3%); } 100% { transform: translate(0,0); }
+}
+
+.chapter-nav {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: var(--z-nav);
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.chapter-nav a {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(245,239,230,0.2); transition: background 0.2s, box-shadow 0.2s;
+}
+.chapter-nav a:hover, .chapter-nav a.active {
+  background: var(--bulb-amber); box-shadow: 0 0 8px var(--bulb-amber);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-grain { animation: none; }
+  html { scroll-behavior: auto; }
+}
