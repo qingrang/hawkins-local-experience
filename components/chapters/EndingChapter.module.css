@@ -1,0 +1,63 @@
+.section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0d1a12 0%, #1a120b 50%, #120b0b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+  color: var(--text-primary);
+}
+
+.content { max-width: 700px; text-align: center; }
+.label { font-family: var(--font-body); font-size: 0.8rem; color: var(--text-dim); margin: 0 0 1rem; }
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin: 0 0 1.5rem;
+  color: var(--bulb-amber);
+  text-shadow: 0 0 20px rgba(242,184,75,0.4);
+}
+.subtitle { color: var(--text-secondary); line-height: 1.9; margin: 0 0 3rem; }
+
+.entryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+}
+@media (min-width: 640px) { .entryGrid { grid-template-columns: 1fr 1fr; } }
+
+.entryCard {
+  padding: 2rem 1.5rem;
+  background: rgba(10,10,12,0.6);
+  border: 1px solid rgba(242,184,75,0.3);
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  color: var(--text-primary);
+}
+.entryCard:hover { border-color: var(--bulb-amber); box-shadow: 0 0 24px rgba(242,184,75,0.2); transform: translateY(-2px); }
+.entryCard:focus-visible { outline: 2px solid var(--neon-cyan); outline-offset: 2px; }
+.entryTitle { margin: 0 0 0.5rem; font-family: var(--font-display); font-size: 1.4rem; color: var(--bulb-amber); }
+.entryHint { margin: 0; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+
+.easterEggs { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); margin: 0; }
+.eggCount { color: var(--neon-cyan); }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+}
+.overlayContent { background: #0a0a0c; border: 1px solid rgba(242,184,75,0.4); padding: 2.5rem; max-width: 480px; width: 100%; text-align: center; }
+.overlayTitle { font-family: var(--font-mono); color: var(--bulb-amber); margin: 0 0 1rem; font-size: 1rem; letter-spacing: 0.2em; }
+.overlayBody { color: var(--text-secondary); line-height: 1.7; margin: 0 0 1.5rem; }
+.overlayClose { padding: 0.5rem 1.2rem; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); background: transparent; font-family: var(--font-mono); font-size: 0.8rem; cursor: pointer; }
+.overlayClose:hover { background: rgba(57,208,216,0.1); }
